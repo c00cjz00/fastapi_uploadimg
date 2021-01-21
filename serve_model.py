@@ -52,7 +52,7 @@ def predict(image: Image.Image):
 
 '''
 # 直接執行
-image = Image.open(('/var/www/html/github/tensorflow-fastapi-starter-pack/cat02.png'))
+image = Image.open('cat.png')
 prediction = predict(image)
 print(prediction)
 '''
