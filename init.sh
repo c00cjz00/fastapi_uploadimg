@@ -12,7 +12,7 @@ git checkout master
 git add *
 git commit -m "init"
 # 上傳至遠端
-git push origin master
+git push master
 
 
 
