@@ -18,3 +18,5 @@ uvicorn predictImg:app  --host 0.0.0.0 --port 9001
 ```
 http://$IP:9999
 ```
+
+Editor: Allen Chuang
