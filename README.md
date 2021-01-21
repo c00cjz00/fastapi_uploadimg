@@ -10,9 +10,12 @@ pip install --upgrade -r requirements.txt
 ### 執行
 ```
 python main.py
+```
 或
+```
 uvicorn predictImg:app  --host 0.0.0.0 --port 9001
 ```
 ### 瀏覽
+```
 http://$IP:9999
-
+```
