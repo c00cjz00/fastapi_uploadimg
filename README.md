@@ -1,6 +1,5 @@
 ### 安裝
 ```
-conda create --name webserver -c pytorch -c fastai fastai==1.0.61 torchvision==0.7 ipykernel 
 conda create --name fastapi python=3.8
 conda activate fastapi
 git clone https://github.com/c00cjz00/fastapi_uploadimg.git
