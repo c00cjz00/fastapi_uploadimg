@@ -11,7 +11,7 @@ from fastapi import FastAPI, File, UploadFile, Request, Form
 from fastapi.templating import Jinja2Templates
 
 # 載入starlette, 功能 Restful api
-from starlette.responses import RedirectResponse
+from starlette.responses import RedirectResponse, StreamingResponse
 
 # 載入  application/components/prediction/serve_model.py 之 Def:  predict, read_imagefile
 from serve_model import predict, read_imagefile
@@ -29,12 +29,12 @@ templates = Jinja2Templates(directory='webTemplates/')
 # 家目錄 /
 @app.get("/", include_in_schema=False)
 async def index(request: Request):
-    # 開啟網頁templates/form3.html
-    return templates.TemplateResponse('form.html', context={'request': request})
+    # 開啟網頁templates/form2.html
+    return templates.TemplateResponse('form2.html', context={'request': request})
 
 # 目錄 /predict/image, POST
 # 檔案上傳函式, 採用 UploadFile
-@app.post("/")
+@app.post("/a")
 async def predict_api(request: Request, email: str = Form(...), usr: str = Form(...), age: int = Form(...), file: UploadFile = File(...)):
     # 帶入參數
     email = email
@@ -56,11 +56,20 @@ async def predict_api(request: Request, email: str = Form(...), usr: str = Form(
         image.save("tmp/1.png")
         # 圖片預測函式
         predictionMessage = predict(image)
-    return templates.TemplateResponse('form.html', context={'request': request, 'email': email, 'usr': usr, 'age': age, 'filename': filename, 'prediction': predictionMessage})
+        print("123allen__________________________<br><br>11")
+    return templates.TemplateResponse('form2.html', context={'request': request, 'email': email, 'usr': usr, 'age': age, 'filename': filename, 'prediction': predictionMessage})
 
+
+@app.post("/")
+async def send(request: Request, file: UploadFile = File(...)):
+    image = read_imagefile(await file.read())
+    #img =                                        # Do something here to create an image
+    #img.save(image, format='JPEG', quality=85)   # Save image to BytesIO
+    #image.seek(0)                                # Return cursor to starting point
+    return StreamingResponse(image, media_type="image/png")
     
 # Python 直接執行 python main.py
 # 或  uvicorn main:app  --host 0.0.0.0 --port 9999
 if __name__ == "__main__":
     #uvicorn.run(app, debug=True)
-    uvicorn.run(app, port=9999, host='0.0.0.0')
+    uvicorn.run(app, port=9998, host='0.0.0.0')

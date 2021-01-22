@@ -31,14 +31,13 @@
 		<button type="submit" class="btn btn-default">Submit</button>
 	</form>
 	<br>
-	{% if email %}
 	<!--p>Result: {{ request }}</p-->
 	<p>Email: {{ email }}</p>
 	<p>Name: {{ usr }}</p>
 	<p>Ages: {{ age }}</p>
 	<p>Uploadfile: {{ filename }}</p>
 	<p>Result: {{ prediction }}</p>	
-	{% endif %}
+	<img src="{{ user_image }}" alt="User Image">
 </div>
 </body>
 </html>
