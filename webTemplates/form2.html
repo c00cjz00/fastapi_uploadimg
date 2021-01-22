@@ -38,7 +38,7 @@
 	<p>Ages: {{ age }}</p>
 	<p>Uploadfile: {{ filename }}</p>
 	<p>Result: {{ prediction }}</p>	
-	<img src="{{ url_for('static', path='/2.png') }}" width="300">	
+	<img src="{{ url_for('static', path='/' + filename) }}" width="300">	
 	{% endif %}
 </div>
 </body>

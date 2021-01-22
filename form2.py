@@ -60,7 +60,7 @@ async def predict_api(request: Request, email: str = Form(...), usr: str = Form(
         #    shutil.copyfileobj(file.file, buffer)
         # 圖片讀取, 啟動等待作業
         image = read_imagefile(await file.read())
-        image.save("static/2.png")
+        image.save("static/" + filename)
         # 圖片預測函式
         predictionMessage = predict(image)
     return templates.TemplateResponse('form2.html', context={'request': request, 'email': email, 'usr': usr, 'age': age, 'filename': filename, 'prediction': predictionMessage})
