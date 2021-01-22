@@ -13,9 +13,6 @@ from starlette.responses import RedirectResponse
 # 載入  application/components/prediction/serve_model.py 之 Def:  predict, read_imagefile
 from serve_model import predict, read_imagefile
 
-#from src.model import spell_number
-
-
 # 描述 app 
 app_desc = """<h2>Try this app by uploading any image with `predict/image`</h2>
 """
