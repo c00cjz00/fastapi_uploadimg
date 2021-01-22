@@ -11,23 +11,28 @@
 <body>
 <div class="container">
 	<h2>Submit form</h2>
-	<form action="/" enctype="multipart/form-data" method="post">
+	<form action="/" enctype="multipart/form-data" method="post" data-toggle="validator">
+		<div class="form-group">
+		  <label for="email">Email:</label>
+		  <input type="email" class="form-control" id="email"  name="email" placeholder="Enter email" value="{{ email }}" required>
+		</div>
 		<div class="form-group">
 		  <label class="form-label" for="usr">Name:</label>
-		  <input type="text" class="form-control" id="usr" name="usr" value="{{ usr }}">
+		  <input type="text" class="form-control" id="usr" name="usr" value="{{ usr }}" required>
 		</div>
 		<div class="form-group">
 		  <label class="form-label" for="age">Age:</label>
-		  <input type="text" class="form-control" id="age" name="age" value="{{ age }}">
+		  <input type="number" class="form-control" id="age" name="age" value="{{ age }}" required>
 		</div>
 		<div class="form-group">
-		  <label class="form-label" for="age">Age:</label>
-		  <input type="file"  class="form-control" id="file" name="file"><br>
+		  <label class="form-label" for="age">Image:</label>
+		  <input type="file"  class="form-control" id="file" name="file" required><br>
 		</div>
 		<button type="submit" class="btn btn-default">Submit</button>
 	</form>
 	<br>
 	<!--p>Result: {{ request }}</p-->
+	<p>Email: {{ email }}</p>
 	<p>Name: {{ usr }}</p>
 	<p>Ages: {{ age }}</p>
 	<p>Uploadfile: {{ filename }}</p>

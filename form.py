@@ -32,8 +32,9 @@ async def index(request: Request):
 # 目錄 /predict/image, POST
 # 檔案上傳函式, 採用 UploadFile
 @app.post("/")
-async def predict_api(request: Request, usr: str = Form(...), age: int = Form(...), file: UploadFile = File(...)):
+async def predict_api(request: Request, email: str = Form(...), usr: str = Form(...), age: int = Form(...), file: UploadFile = File(...)):
     # 帶入參數
+    email = email
     usr = usr
     age = age
     filename = file.filename
@@ -48,7 +49,7 @@ async def predict_api(request: Request, usr: str = Form(...), age: int = Form(..
         image = read_imagefile(await file.read())
         # 圖片預測函式
         predictionMessage = predict(image)
-    return templates.TemplateResponse('form.html', context={'request': request, 'usr': usr, 'age': age, 'filename': filename, 'prediction': predictionMessage})
+    return templates.TemplateResponse('form.html', context={'request': request, 'email': email, 'usr': usr, 'age': age, 'filename': filename, 'prediction': predictionMessage})
 
     
 # Python 直接執行 python main.py
