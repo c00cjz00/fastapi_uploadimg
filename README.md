@@ -9,10 +9,14 @@ pip install --upgrade -r requirements.txt
 ### 執行
 ```
 python main.py
+or
+python fomr2.py
 ```
 或
 ```
-uvicorn predictImg:app  --host 0.0.0.0 --port 9001
+uvicorn main:app  --host 0.0.0.0 --port 9999
+or
+uvicorn fomr2:app  --host 0.0.0.0 --port 9999
 ```
 ### 瀏覽
 ```
